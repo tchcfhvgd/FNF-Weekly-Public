@@ -83,6 +83,10 @@ import modchart.*;
 import gameObjects.SongCard;
 import meta.data.Metadata.MetadataFile;
 
+import mobile.TouchButton;
+import mobile.TouchPad;
+import mobile.input.MobileInputID;
+
 #if sys
 import sys.FileSystem;
 #end
@@ -1245,6 +1249,15 @@ class PlayState extends MusicBeatState
 		splash.alpha = 0.0;
 		// startCountdown();
 
+		#if !android
+		addTouchPad("NONE", "P");
+		addTouchPadCamera();
+		touchPad.visible = true;
+		#end
+		addMobileControls();
+		mobileControls.onButtonDown.add(onButtonPress);
+		mobileControls.onButtonUp.add(onButtonRelease);
+		
 		generateSong(SONG.song);
 		modManager = new ModManager(this);
 		hscriptSetDefault("modManager", modManager);
@@ -2139,7 +2152,7 @@ class PlayState extends MusicBeatState
 			callOnHScripts('postModifierRegister', []);
 
 			new FlxTimer().start(countdownDelay, (t:FlxTimer)->{
-				startedCountdown = true;
+			    startedCountdown = mobileControls.instance.visible = true;
 				Conductor.songPosition = 0;
 				Conductor.songPosition -= Conductor.crotchet * 5;
 				setOnLuas('startedCountdown', true);
@@ -3234,7 +3247,7 @@ class PlayState extends MusicBeatState
 		// 	botplayTxt.alpha = 1 - Math.sin((Math.PI * botplaySine) / 180);
 		// }
 
-		if (controls.PAUSE && startedCountdown && canPause)
+		if (#if android FlxG.android.justReleased.BACK #else touchPad.buttonP.justPressed #end || controls.PAUSE && startedCountdown && canPause)
 		{
 			var ret:Dynamic = callOnScripts('onPause', []);
 			if(ret != Globals.Function_Stop) {
@@ -4395,6 +4408,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+		mobileControls.instance.visible = #if !android touchPad.visible = #end false;
 		timeBarBG.visible = false;
 		timeBar.visible = false;
 		timeTxt.visible = false;
