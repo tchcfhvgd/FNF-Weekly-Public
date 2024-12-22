@@ -55,8 +55,6 @@ class OptionsState extends MusicBeatState
 				openSubState(new meta.data.options.VisualsUISubState());
 			case 'Gameplay':
 				openSubState(new meta.data.options.GameplaySettingsSubState());
-			case 'Loading':
-				openSubState(new meta.data.options.MiscSubState());
 			case 'Adjust Delay and Combo':
 				LoadingState.loadAndSwitchState(new meta.data.options.NoteOffsetState());
 			case 'Mobile Options':
