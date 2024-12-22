@@ -29,7 +29,9 @@ import lime.app.Application;
 import gameObjects.*;
 import meta.data.WeekData;
 import meta.data.*;
+#if DISCORD_ALLOWED
 import meta.data.Discord.DiscordClient;
+#end
 import meta.data.options.*;
 import meta.states.*;
 import meta.states.editors.*;
