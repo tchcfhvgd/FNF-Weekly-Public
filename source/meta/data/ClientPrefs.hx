@@ -23,7 +23,16 @@ class ClientPrefs {
 	public static var gold:Bool = false;
 
 	//-----------------------------------------//
-	public static var gpuCaching:Bool = true;
+	// Mobile and Mobile Controls Releated
+	public static var extraButtons:String = "NONE"; // mobile extra button option
+	public static var hitboxPos:Bool = true; // hitbox extra button position option
+	public static var controlsAlpha:Float = FlxG.onMobile ? 0.6 : 0;
+	public static var screensaver:Bool = false;
+	#if android
+	public static var storageType:String = "EXTERNAL_DATA";
+	#end
+	public static var hitboxType:String = "Gradient";
+	public static var gpuCaching:Bool = false;
 	public static var loadingThreads:Int = Math.floor(Std.parseInt(Sys.getEnv("NUMBER_OF_PROCESSORS"))/2);
 	public static var multicoreLoading:Bool = false;
 
@@ -160,8 +169,15 @@ class ClientPrefs {
 	public static function saveSettings() {
 		for (i in Reflect.fields(kutData)) Reflect.setField(FlxG.save.data, i, Reflect.field(kutData, i));
 
-
-		FlxG.save.data.gpuCaching = gpuCaching;
+		FlxG.save.data.extraButtons = extraButtons;
+		FlxG.save.data.hitboxPos = hitboxPos;
+		FlxG.save.data.controlsAlpha = controlsAlpha;
+		FlxG.save.data.screensaver = screensaver;
+		#if android
+		FlxG.save.data.storageType = storageType;
+		#end
+		FlxG.save.data.hitboxType = hitboxType;
+                FlxG.save.data.gpuCaching = gpuCaching;
 
 		FlxG.save.data.yoshi = yoshi;
 		FlxG.save.data.darnell = darnell;
@@ -231,6 +247,26 @@ class ClientPrefs {
 		for (i in Reflect.fields(kutData)) if (Reflect.hasField(FlxG.save.data, i))
 			Reflect.setField(kutData, i, Reflect.field(FlxG.save.data, i));
 
+		if(FlxG.save.data.extraButtons != null) {
+			extraButtons = FlxG.save.data.extraButtons;
+		}
+		if(FlxG.save.data.hitboxPos != null) {
+			hitboxPos = FlxG.save.data.hitboxPos;
+		}
+		if(FlxG.save.data.controlsAlpha != null) {
+			controlsAlpha = FlxG.save.data.controlsAlpha;
+		}
+		if(FlxG.save.data.screensaver != null) {
+			screensaver = FlxG.save.data.screensaver;
+		}
+		#if android
+		if(FlxG.save.data.storageType != null) {
+			storageType = FlxG.save.data.storageType;
+		}
+		#end
+		if(FlxG.save.data.hitboxType != null) {
+			hitboxType = FlxG.save.data.hitboxType;
+		}
 		if (FlxG.save.data.gpuCaching != null) FlxG.save.data.gpuCaching = gpuCaching;
 		
 		if(FlxG.save.data.yoshi != null) {
