@@ -34,6 +34,8 @@ class FinalCreditsState extends MusicBeatState
         finalImage.alpha = 0;
         add(finalImage);
 
+	addTouchPad("NONE", "A_B");
+
         new FlxTimer().start(170.5, function(tmr:FlxTimer)
         {
             FlxTween.tween(finalImage, {alpha: 1}, 3, {ease: FlxEase.linear, onComplete: function(twn:FlxTween){
