@@ -104,7 +104,7 @@ class WeeklyMainMenuState extends MusicBeatState
 		weekArray = [];
 		marathonWeek = 0;
 		marathonArray = [];
-		FlxG.mouse.visible = true;
+		FlxG.mouse.visible = false;
 
 		#if MODS_ALLOWED
 		Paths.pushGlobalMods();
