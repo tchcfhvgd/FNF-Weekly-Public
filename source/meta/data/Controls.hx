@@ -46,6 +46,9 @@ enum abstract Action(String) to String from String
 	var BACK = "back";
 	var PAUSE = "pause";
 	var RESET = "reset";
+	var NOTE_DODGE = "note_dodge";
+	var NOTE_DODGE_P = "note_dodge-press";
+	var NOTE_DODGE_R = "note_dodge-release";
 }
 #else
 @:enum
@@ -79,6 +82,9 @@ abstract Action(String) to String from String
 	var BACK = "back";
 	var PAUSE = "pause";
 	var RESET = "reset";
+	var NOTE_DODGE = "note_dodge";
+	var NOTE_DODGE_P = "note_dodge-press";
+	var NOTE_DODGE_R = "note_dodge-release";
 }
 #end
 
@@ -151,6 +157,9 @@ class Controls extends FlxActionSet
 	var _back = new FlxActionDigital(Action.BACK);
 	var _pause = new FlxActionDigital(Action.PAUSE);
 	var _reset = new FlxActionDigital(Action.RESET);
+	var _note_dodge = new FlxActionDigital(Action.NOTE_DODGE);
+	var _note_dodgeP = new FlxActionDigital(Action.NOTE_DODGE_P);
+	var _note_dodgeR = new FlxActionDigital(Action.NOTE_DODGE_R);
 
 	#if (haxe >= "4.0.0")
 	var byName:Map<String, FlxActionDigital> = [];
@@ -300,6 +309,15 @@ class Controls extends FlxActionSet
 
 	inline function get_RESET()
 		return _reset.check();
+		
+	public var NOTE_DODGE(get, never):Bool;
+	inline function get_NOTE_DODGE() return _note_dodge.check();
+
+	public var NOTE_DODGE_P(get, never):Bool;
+	inline function get_NOTE_DODGE_P() return _note_dodgeP.check();
+
+	public var NOTE_DODGE_R(get, never):Bool;
+	inline function get_NOTE_DODGE_R() return _note_dodgeR.check();
 
 	public var mobileC(get, never):Bool;
 
