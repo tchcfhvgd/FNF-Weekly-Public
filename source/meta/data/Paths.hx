@@ -71,6 +71,7 @@ class Paths
 				var obj = currentTrackedAssets.get(key);
 				@:privateAccess
 				if (obj != null) {
+					if (obj.bitmap != null && obj.bitmap.__texture != null) obj.bitmap.__texture.dispose();
 					// remove the key from all cache maps
 					FlxG.bitmap._cache.remove(key);
 					openfl.Assets.cache.removeBitmapData(key);
@@ -103,6 +104,7 @@ class Paths
 			var obj = FlxG.bitmap._cache.get(key);
 			if (obj != null && !currentTrackedAssets.exists(key))
 			{
+				if (obj.bitmap != null && obj.bitmap.__texture != null) obj.bitmap.__texture.dispose();
 				openfl.Assets.cache.removeBitmapData(key);
 				FlxG.bitmap._cache.remove(key);
 				obj.destroy();
