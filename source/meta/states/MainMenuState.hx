@@ -22,7 +22,9 @@ import lime.app.Application;
 import gameObjects.*;
 import meta.data.*;
 import meta.data.Achievements.AchievementObject;
+#if DISCORD_ALLOWED
 import meta.data.Discord.DiscordClient;
+#end
 import meta.data.options.*;
 import meta.states.*;
 import meta.states.editors.*;
