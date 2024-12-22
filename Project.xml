@@ -30,7 +30,7 @@
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
 
 	<!--Mobile-specific-->
-	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" resizable="false"/>
+	<window if="mobile" orientation="landscape" fullscreen="true" resizable="false" allow-shaders="true" require-shaders="true" allow-high-dpi="true" />
 
 	<!--Switch-specific-->
 	<window if="switch" orientation="landscape" fullscreen="true" width="0" height="0" resizable="true" />
@@ -44,11 +44,11 @@
 	<classpath name="source" />
 	
 	<!-- PSYCH ENGINE CUSTOMIZATION -->
-	<define name="MODS_ALLOWED" if="desktop" />
-	<define name="LUA_ALLOWED" if="desktop" />
+	<define name="MODS_ALLOWED" if="desktop || mobile" />
+	<define name="LUA_ALLOWED" if="desktop || mobile" />
 	<!-- <define name="ACHIEVEMENTS_ALLOWED" /> FUCK YOUUUU-->
 	<define name="VIDEOS_ALLOWED" if="cpp" />
-	<define name="DISCORD_ALLOWED" if="cpp"/>
+	<define name="DISCORD_ALLOWED" if="desktop"/>
 
 	<!-- OOPPSSS HAHA -->
 	<!-- define name="HIT_SINGLE"/ -->
@@ -109,6 +109,7 @@
 	<haxelib name="discord_rpc" if="DISCORD_ALLOWED"/>
 	<haxelib name="away3d"/>
 	<haxelib name="hxvlc" if="VIDEOS_ALLOWED"/>
+	<haxelib name="extension-androidtools" if="android" />
 
 	<!-- <haxedef name="FLX_NO_PITCH" /> -->
 
@@ -155,6 +156,8 @@
 
 	<!-- _________________________________ Custom _______________________________ -->
 
+	<certificate path="key.keystore" password="psychengine" alias="psychport" alias-password="psychengine" if="android" unless="debug" />
+		
 	<!--Place custom nodes like icons here (higher priority to override the HaxeFlixel icon)-->
 	
 	<icon path="projFiles/icon/icon16.png" size='16'/>
