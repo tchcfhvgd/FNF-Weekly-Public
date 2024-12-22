@@ -43,6 +43,8 @@ class Init extends FlxState
 
 		super.create();
 
+		mobile.MobileData.init();
+
 		setSaveBind();
 
 		ClientPrefs.loadPrefs();	
