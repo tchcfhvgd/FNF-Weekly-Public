@@ -29,6 +29,10 @@ import options.Option;
 import sys.io.File;
 #end
 
+#if android
+import android.os.Build;
+#end
+
 class MobileOptionsSubState extends BaseOptionsMenu
 {
 	#if android
@@ -78,9 +82,12 @@ class MobileOptionsSubState extends BaseOptionsMenu
 		}
 
 		#if android
+		if (VERSION.SDK_INT > 30)
+		{
 		option = new Option('Storage Type', 'Which folder Psych Engine should use?\n(CHANGING THIS MAKES DELETE YOUR OLD FOLDER!!)', 'storageType', 'string',
 			'EXTERNAL_DATA', storageTypes);
 		addOption(option);
+		}
 		#end
 
 		super();
