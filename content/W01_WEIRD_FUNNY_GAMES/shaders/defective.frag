@@ -1,8 +1,6 @@
 //SHADERTOY PORT FIX
 #pragma header
-vec2 uv = openfl_TextureCoordv.xy;
-vec2 fragCoord = openfl_TextureCoordv*openfl_TextureSize;
-vec2 iResolution = openfl_TextureSize;
+
 uniform float iTime;
 #define iChannel0 bitmap
 #define iChannel1 bitmap
@@ -27,6 +25,9 @@ const float angleStep = pi * 2.0 / 3.0;	// space samples every 120 degrees
 
 void mainImage( )
 {
+	vec2 uv = openfl_TextureCoordv.xy;
+vec2 fragCoord = openfl_TextureCoordv*openfl_TextureSize;
+vec2 iResolution = openfl_TextureSize;
 	vec2 baseUV = fragCoord.xy / iResolution.xy;
 	vec2 fromCentre = baseUV - vec2(0.5, 0.5);
 	// correct for aspect ratio
