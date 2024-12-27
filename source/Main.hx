@@ -93,6 +93,10 @@ class Main extends Sprite
 
 	private function setupGame():Void
 	{
+		#if mobile
+		Storage.copyNecessaryFiles();
+		#end
+		
 		ClientPrefs.loadDefaultKeys();
 		addChild(new FNFGame(gameWidth, gameHeight, #if (mobile && MODS_ALLOWED) !CopyState.checkExistingFiles() ? CopyState : #end initialState, #if(flixel < "5.0.0")zoom,#end framerate, framerate, skipSplash, startFullscreen));
 
