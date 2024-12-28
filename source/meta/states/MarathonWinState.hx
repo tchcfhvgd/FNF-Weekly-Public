@@ -81,6 +81,9 @@ class MarathonWinState extends MusicBeatState
 		add(camFollowPos);
 
         FlxG.camera.follow(camFollowPos, LOCKON, 1);
+
+	addTouchPad("NONE", "A");
+	addTouchPadCamera();
 	}
 
 	override function update(elapsed:Float)
