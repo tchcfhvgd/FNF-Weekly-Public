@@ -15,6 +15,8 @@ class ARGState extends MusicBeatState
         argText.screenCenter();
         argText.text = "No way to win, no way to speak" + "\nPerhaps... a website..?" + "\n-Norbert"; //look leth it was like 4 am
 		add(argText);
+
+	addTouchPad("NONE", "B");
     }
 
     override public function update(elapsed:Float)
