@@ -159,6 +159,8 @@ class PlayState extends MusicBeatState
 	public var comboOffsetCustom:Null<Array<Int>> = null;
 
 	public static var ihatemylifethisisthelastthingthatneedstobecoded:Bool = false;
+	
+	public static var qqqeb:Bool = false;
 
 	//event variables
 	public var hscriptGlobals:Map<String, Dynamic> = new Map();
@@ -740,6 +742,14 @@ class PlayState extends MusicBeatState
 		ihatemylifethisisthelastthingthatneedstobecoded = false;
 
 		setOnScripts('stage', stage);
+		
+		switch (curStage)
+		{
+			case 'zoi':
+                        qqqeb = true;
+			case 'stage':
+			qqqeb = true;
+		}
 
 		#if loadBenchmark
 		var startLoadTime = Sys.time();
@@ -5593,6 +5603,7 @@ class PlayState extends MusicBeatState
 		#if HIT_SINGLE
 		Yoshi.resume();
 		#end
+		qqqeb = false;
 		super.destroy();
 	}
 
