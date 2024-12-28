@@ -208,10 +208,10 @@ class FreeplayState extends MusicBeatState
 		final buttonReset:String = controls.mobileC ? 'Y' : 'RESET';
 		
 		#if PRELOAD_ALL
-		var leText:String = "Press $buttonSpace to listen to the Song / Press $buttonCtrl to open the Gameplay Changers Menu / Press $buttonReset to Reset your Score and Accuracy.";
+		var leText:String = 'Press $buttonSpace to listen to the Song / Press $buttonCtrl to open the Gameplay Changers Menu / Press $buttonReset to Reset your Score and Accuracy.';
 		var size:Int = 16;
 		#else
-		var leText:String = "Press $buttonCtrl to open the Gameplay Changers Menu / Press $buttonReset to Reset your Score and Accuracy.";
+		var leText:String = 'Press $buttonCtrl to open the Gameplay Changers Menu / Press $buttonReset to Reset your Score and Accuracy.';
 		var size:Int = 18;
 		#end
 		var text:FlxText = new FlxText(textBG.x, textBG.y + 4, FlxG.width, leText, size);
