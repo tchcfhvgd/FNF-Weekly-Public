@@ -359,6 +359,11 @@ class WeeklyMainMenuState extends MusicBeatState
 		lastBeatHit = curBeat;
 	}
 
+	override function closeSubState() {
+		super.closeSubState();
+	    canClick = true;
+	}
+	
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
@@ -505,7 +510,7 @@ class WeeklyMainMenuState extends MusicBeatState
 				if (optionGrp.members[8].active == true){
 					openSubState(new MarathonButtonsSubstate(0));
 				}
-				canClick = true;
+				canClick = false;
 			case 'more':
 				MusicBeatState.switchState(new WeeklyGalleryState()); //FuckingTriangleEffect
 				FlxG.sound.play(Paths.sound('scrollMenu'));
