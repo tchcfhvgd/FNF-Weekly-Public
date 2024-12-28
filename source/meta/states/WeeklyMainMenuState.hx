@@ -509,7 +509,7 @@ class WeeklyMainMenuState extends MusicBeatState
 			case 'more':
 				MusicBeatState.switchState(new WeeklyGalleryState()); //FuckingTriangleEffect
 				FlxG.sound.play(Paths.sound('scrollMenu'));
-				FlxG.mouse.visible = true;
+				FlxG.mouse.visible = false;
 		}
 	}
 
